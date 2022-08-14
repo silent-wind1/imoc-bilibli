@@ -6,10 +6,8 @@ import com.imooc.bilibli.domain.UserFollowing;
 import com.imooc.bilibli.service.UserFollowingService;
 import com.imooc.com.imooc.bilibli.api.support.UserSupport;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class UserFollowingApi {
     private UserSupport userSupport;
 
     /**
-     * 添加用户分组
+     * 添加用户关注
      * @param userFollowing
      * @return
      */
@@ -59,6 +57,11 @@ public class UserFollowingApi {
         return new JsonResponse<>(userFollowings);
     }
 
+    /**
+     * 添加用户关注分组
+     * @param followingGroup
+     * @return
+     */
     @PostMapping("/user-following-groups")
     public JsonResponse<Long> addUserFollowingGroups(@RequestBody FollowingGroup followingGroup) {
         Long userId = userSupport.getCurrentUserId();
@@ -66,6 +69,11 @@ public class UserFollowingApi {
         Long groupId = userFollowingService.addUserFollowingGroups(followingGroup);
         return new JsonResponse<>(groupId);
     }
+
+    /**
+     * 获取到用户关注分组
+     * @return
+     */
 
     @GetMapping("/user-following-groups")
     public JsonResponse<List<FollowingGroup>> getUserFollowingGroups() {

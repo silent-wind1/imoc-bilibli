@@ -14,7 +14,7 @@ public class FollowingGroup {
     private Long userId;
     private String name;
     private String type;
-    private Date creteTime;
+    private Date createTime;
     private Date updateTime;
     private List<UserInfo> followingUserInfoList;
 

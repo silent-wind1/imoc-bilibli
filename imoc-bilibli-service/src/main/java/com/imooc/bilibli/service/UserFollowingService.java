@@ -23,7 +23,6 @@ public class UserFollowingService {
     private UserFollowingDao userFollowingDao;
     @Autowired
     private FollowingGroupService followingGroupService;
-
     @Autowired
     private UserService userService;
 
@@ -120,14 +119,14 @@ public class UserFollowingService {
     }
 
     public Long addUserFollowingGroups(FollowingGroup followingGroup) {
-        followingGroup.setCreteTime(new Date());
+        followingGroup.setCreateTime(new Date());
         followingGroup.setType(UserConstant.USER_FOLLOWING_GROUP_TYPE_USER);
+        System.out.println(followingGroup);
         followingGroupService.addFollowingGroup(followingGroup);
         return followingGroup.getId();
     }
 
     public List<FollowingGroup> getUserFollowingGroups(Long userId) {
-
         return followingGroupService.getUserFollowingGroups(userId);
     }
 
