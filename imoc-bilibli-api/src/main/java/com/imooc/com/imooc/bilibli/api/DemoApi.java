@@ -16,4 +16,8 @@ public class DemoApi {
     public Long query(Long id) {
         return demoService.query(id);
     }
+
+    public void test() {
+        System.out.println("简单测试");
+    }
 }
